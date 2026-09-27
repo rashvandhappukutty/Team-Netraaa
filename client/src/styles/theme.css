@@ -1,0 +1,72 @@
+:root {
+  /* Color Palette - Intelligence Dark Theme */
+  --bg-primary: #070a12;
+  --bg-surface: #0e1526;
+  --bg-surface-elevated: #151f38;
+  --bg-surface-glass: rgba(14, 21, 38, 0.75);
+  --bg-card: #111a2f;
+  --bg-card-hover: #16223d;
+  --bg-input: #090e1c;
+  --bg-input-focus: #0c1428;
+
+  /* Accent & Tactical Colors */
+  --cyan-primary: #00e5ff;
+  --cyan-glow: rgba(0, 229, 255, 0.25);
+  --cyan-subtle: rgba(0, 229, 255, 0.08);
+
+  --emerald-verified: #00e676;
+  --emerald-glow: rgba(0, 230, 118, 0.25);
+  --emerald-subtle: rgba(0, 230, 118, 0.1);
+
+  --amber-warning: #ffb300;
+  --amber-glow: rgba(255, 179, 0, 0.25);
+  --amber-subtle: rgba(255, 179, 0, 0.1);
+
+  --crimson-critical: #ff1744;
+  --crimson-glow: rgba(255, 23, 68, 0.25);
+  --crimson-subtle: rgba(255, 23, 68, 0.1);
+
+  --indigo-accent: #651fff;
+  --indigo-subtle: rgba(101, 31, 255, 0.12);
+
+  --blue-info: #2979ff;
+  --blue-subtle: rgba(41, 121, 255, 0.1);
+
+  /* Typography Colors */
+  --text-primary: #f0f4fc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
+  --text-cyan: #38bdf8;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-cyan: rgba(0, 229, 255, 0.35);
+  --border-emerald: rgba(0, 230, 118, 0.35);
+  --border-crimson: rgba(255, 23, 68, 0.4);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+  --shadow-cyan: 0 0 20px rgba(0, 229, 255, 0.2);
+  --shadow-emerald: 0 0 20px rgba(0, 230, 118, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+}
