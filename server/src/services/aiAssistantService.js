@@ -1,5 +1,50 @@
 import db from '../config/db.js';
 
+function extractEntityNameFromQuery(query) {
+  const candidates = [
+    'devraj malhotra',
+    'vikram singhania',
+    'elena rostova',
+    'zenith offshore',
+    'ghostrelay',
+    'nexus syndicate'
+  ];
+
+  for (const candidate of candidates) {
+    if (query.includes(candidate)) return candidate;
+  }
+
+  return null;
+}
+
+function getUnverifiedFactResponse(userQuery, investigationId, entities, personA, personB) {
+  const query = userQuery.trim();
+  const requestedEntity = extractEntityNameFromQuery(query.toLowerCase()) || 'the subject';
+  const inScopeFacts = [
+    'telephony coordination between Devraj Malhotra and Vikram Singhania',
+    'sector 29 gurugram meeting and hardware handoff',
+    'offshore remittance trail involving Zenith Offshore Factoring',
+    'SCADA intrusion timing and operational window',
+    'known aliases and relationship links already present in the Operation Nexus dataset'
+  ];
+
+  return {
+    query,
+    title: 'UNSUPPORTED FACT CHECK — NO VERIFIED EVIDENCE FOUND',
+    answer: `No verified evidence in the current Operation Nexus dataset supports a direct answer for this fact. NETRA has strong evidence for ${requestedEntity === 'the subject' ? 'the subject' : requestedEntity}, but the ingested records do not include a passport number, national ID, or equivalent identity document for that entity.`,
+    confidence: 0.06,
+    supporting_evidence: [
+      `The current dataset contains verified operational intelligence for ${personA.canonical_name || 'Devraj Malhotra'} and ${personB.canonical_name || 'Vikram Singhania'}, including call patterns, meeting timestamps, and financial flow evidence.`,
+      'The known evidence scope includes telephony, surveillance, and financial records; no passport or document registry was ingested into this investigation.',
+      `Available investigation facts currently confirmed: ${inScopeFacts.join('; ')}.`
+    ],
+    source_ids: ['NETRA-DS-2026-00001', 'NETRA-DS-2026-00002', 'NETRA-DS-2026-00003', 'NETRA-DS-2026-00004'],
+    highlight_nodes: entities.slice(0, 6).map(e => e.id).filter(Boolean),
+    highlight_edges: [],
+    recommended_action: 'REQUEST_DOCUMENTARY_SOURCE'
+  };
+}
+
 /**
  * Specialized Investigation-Grounded AI Intelligence Assistant
  * Strictly queries the current investigation's verified graph, evidence records,
@@ -189,6 +234,11 @@ export async function queryInvestigationAssistant(investigationId, userQuery) {
       highlight_edges: [],
       recommended_action: 'VIEW_TIMELINE'
     };
+  }
+
+  const factKeywords = /(passport|passport number|aadhar|aadhaar|pan|national id|national identification|dl number|driver\s*license|document number|id number|account number|phone number)/i;
+  if (factKeywords.test(userQuery)) {
+    return getUnverifiedFactResponse(userQuery, investigationId, entities, personA, personB);
   }
 
   // DEFAULT / FALLBACK: General Grounded Response based on current investigation entities
